@@ -26,13 +26,11 @@ const cli = meow(
 	},
 );
 
-
-
 switch (cli.input[0]) {
 	case 'total-cost':
-		await import('./commands/total-cost.js')
+		await import('./commands/total-cost.js');
 		break;
 
 	default:
-		cli.showHelp(0)
+		cli.showHelp(0);
 }
