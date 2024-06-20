@@ -2,7 +2,7 @@ import z from 'zod';
 
 
 
-export const discountCodeSchema = z.object({
+export const discountSchema = z.object({
     code: z.string(),
     discount: z.object({
         value: z.union([
@@ -32,7 +32,7 @@ export const discountCodeSchema = z.object({
 })
 
 
-export const discountCodeArraySchema = z.array(discountCodeSchema).nonempty().refine(
+export const discountArraySchema = z.array(discountSchema).nonempty().refine(
     data => {
         const codes = data.map(code => code.code);
         return codes.length === new Set(codes).size;
@@ -42,4 +42,4 @@ export const discountCodeArraySchema = z.array(discountCodeSchema).nonempty().re
     }
 )
 
-export type DiscountCode = z.infer<typeof discountCodeSchema>
+export type Discount = z.infer<typeof discountSchema>

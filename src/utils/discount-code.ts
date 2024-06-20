@@ -1,12 +1,12 @@
 
-import { DiscountCode, discountCodeArraySchema } from "../models/discount.js";
+import { Discount, discountArraySchema } from "../models/discount.js";
 import { fromError } from 'zod-validation-error';
 import { readFile } from "../utils/file.js";
 
-export const getDiscountCode = async (filePath: string): Promise<DiscountCode[] | null> => {
+export const getDiscountCode = async (filePath: string): Promise<Discount[] | null> => {
     const file = await readFile(filePath)
     if (!file) return null
-    const discountCodeArray = discountCodeArraySchema.safeParse(JSON.parse(file))
+    const discountCodeArray = discountArraySchema.safeParse(JSON.parse(file))
     if (!discountCodeArray.success) {
         const validationError = fromError(discountCodeArray.error);
         console.error(validationError.toString());
