@@ -30,7 +30,9 @@ switch (cli.input[0]) {
 	case 'total-cost':
 		await import('./commands/total-cost.js');
 		break;
-
+	case 'delivery-time':
+		await import('./commands/delivery-time.js')
+		break;
 	default:
 		cli.showHelp(0);
 }
