@@ -1,11 +1,11 @@
 import {
 	TotalCostSetup,
 	totalCostSetupFileSchema,
-} from '../models/total-cost.js';
+} from '../../models/total-cost.js';
 import { fromError } from 'zod-validation-error';
-import { readFile } from '../utils/file.js';
+import { readFile } from '../../utils/file.js';
 
-export const totalCostSetupStringToSchema = (
+const totalCostSetupStringToSchema = (
 	packageDeliverySetupString: string,
 	schema = totalCostSetupFileSchema,
 ) => {
