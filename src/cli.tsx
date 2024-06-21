@@ -4,15 +4,18 @@ import meow from 'meow';
 
 const cli = meow(
 	`
+	$ super-delivery --help
+
 	Usage
-	  $ cli-alt
-
+	  $ super-delivery
+	
 	Commands
-	  total-cost calculate total cost
-	  delivery-cost calculate delivery cost
-
+	  total-cost 		calculate total cost
+	  delivery-time 	calculate delivery time
+  
 	Examples
-	  $ total-cost
+	  $ super-delivery total-cost --setup=setup.txt --discount=discount-codes.json
+	  $ super-delivery delivery-time --setup=setup.txt --discount=discount-codes.json
 	  
 `,
 	{
