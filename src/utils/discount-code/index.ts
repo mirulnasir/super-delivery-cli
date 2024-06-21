@@ -1,6 +1,6 @@
-import {Discount, discountArraySchema} from '../../models/discount.js';
-import {fromError} from 'zod-validation-error';
-import {readFile} from '../file.js';
+import { Discount, discountArraySchema } from '../../models/discount.js';
+import { fromError } from 'zod-validation-error';
+import { readFile } from '../file.js';
 
 export const getDiscountCode = async (
 	filePath: string,
@@ -15,3 +15,4 @@ export const getDiscountCode = async (
 	}
 	return discountCodeArray.data;
 };
+
