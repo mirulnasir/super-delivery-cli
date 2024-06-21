@@ -2,6 +2,8 @@ import type { Flag, FlagType, Options } from 'meow';
 import meow from 'meow';
 import { getDiscountCode } from '../utils/discount-code/index.js';
 import { getTotalCostSetup } from '../utils/total-cost.js';
+import { CostCalculator } from '../services/total-cost.js';
+import fs from 'fs';
 const flags: Record<string, Flag<FlagType, any>> = {
 	help: { type: 'boolean', aliases: ['h'] },
 	interactive: { type: 'boolean', aliases: ['i'], default: false },
@@ -58,4 +60,26 @@ const checkFiles = async () => {
 
 const { setup, discountCodes } = await checkFiles();
 
-console.log(setup, discountCodes);
+if (!setup || !discountCodes) {
+	console.error("Error: setup or discount codes not found")
+	process.exit(1)
+}
+const costcalculator = new CostCalculator({ baseDeliveryCost: setup.baseDeliveryCost, discountCodes })
+const getOutput = () => {
+	const out = setup.packageSetup.map((pkg) => {
+		const { costDiscounted, discountValue } = costcalculator.calculatePackageCost(pkg)
+		return `${pkg.packageName} ${discountValue} ${costDiscounted}`
+
+	})
+	return out.join('\r\n')
+}
+fs.writeFile('total-cost-out.txt', getOutput(), (err) => {
+	if (err)
+		console.log(err);
+	else {
+		console.log("File written successfully\n");
+		console.log("The written has the following contents:");
+		console.log(fs.readFileSync("total-cost-out.txt", "utf8"));
+	}
+}
+)
