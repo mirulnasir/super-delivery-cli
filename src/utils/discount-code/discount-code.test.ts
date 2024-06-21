@@ -14,3 +14,8 @@ test('should return null for invalid file path', async () => {
 	expect(discountCodes).toBeNull();
 });
 
+test('should have property code with value OFR001', async () => {
+	const discountCodes = await getDiscountCode(filePath);
+	const discountCode = discountCodes?.find(code => code.code === 'OFR001');
+	expect(discountCode).toHaveProperty('code', 'OFR001');
+});
