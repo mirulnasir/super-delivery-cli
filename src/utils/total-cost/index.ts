@@ -5,7 +5,7 @@ import {
 import { fromError } from 'zod-validation-error';
 import { readFile } from '../../utils/file.js';
 
-const totalCostSetupStringToSchema = (
+export const totalCostSetupStringToSchema = (
 	packageDeliverySetupString: string,
 	schema = totalCostSetupFileSchema,
 ) => {

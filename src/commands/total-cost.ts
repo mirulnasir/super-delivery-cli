@@ -1,7 +1,7 @@
 import type { Flag, FlagType, Options } from 'meow';
 import meow from 'meow';
 import { getDiscountCode } from '../utils/discount-code/index.js';
-import { getTotalCostSetup } from '../utils/total-cost.js';
+import { getTotalCostSetup } from '../utils/total-cost/index.js';
 import { CostCalculator } from '../services/total-cost.js';
 import fs from 'fs';
 const flags: Record<string, Flag<FlagType, any>> = {

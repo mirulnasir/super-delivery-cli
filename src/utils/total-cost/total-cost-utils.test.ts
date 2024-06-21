@@ -1,6 +1,6 @@
 import path from 'path';
 
-import { totalCostSetupStringToSchema, getTotalCostSetup } from '../total-cost.js';
+import { totalCostSetupStringToSchema, getTotalCostSetup } from './index.js';
 import { totalCostSetupFileSchema } from '../../models/total-cost.js';
 const filePath = path.join(__dirname, 'sample.txt');
 
