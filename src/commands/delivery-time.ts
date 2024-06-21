@@ -1,5 +1,7 @@
 import type { Flag, FlagType, Options } from 'meow';
 import meow from 'meow';
+import { getDeliveryTimeSetup } from '../utils/delivery-time/index.js';
+import { getDiscountCode } from '../utils/discount-code/index.js';
 
 const flags: Record<string, Flag<FlagType, any>> = {
     help: { type: "boolean", aliases: ["h"] },
@@ -44,4 +46,23 @@ const cli = meow(
 if (cli.flags['help']) {
     cli.showHelp(0)
 
+}
+
+const checkFiles = async () => {
+    const setupPath = cli.flags['setup'] as string
+    const discountFile = cli.flags["discount"] as string
+    const [setup, discountCodes] = await Promise.all([
+        getDeliveryTimeSetup(setupPath),
+        getDiscountCode(discountFile)
+    ]);
+
+    return { setup, discountCodes }
+
+}
+const { setup, discountCodes } = await checkFiles();
+
+
+if (!setup || !discountCodes) {
+    console.error("Error: setup or discount codes not found")
+    process.exit(1)
 }
