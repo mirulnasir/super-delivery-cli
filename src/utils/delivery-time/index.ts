@@ -93,7 +93,6 @@ export const getArrayIndicesFromOriginal = (arr: number[], subArr: number[]): nu
     return result
 }
 
-
 const deliveryVehicleSetupStringToSchema = (deliveryVehicleSetupString: string, schema = deliveryVehicleSetupSchema) => {
     const strArray = deliveryVehicleSetupString.split('\n').filter(Boolean);
     const deliverySetup = schema.safeParse(strArray);
