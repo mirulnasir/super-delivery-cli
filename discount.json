@@ -1,0 +1,47 @@
+[
+    {
+        "code": "OFR001",
+        "discount": {
+            "type": "percentage",
+            "value": 10
+        },
+        "distance": {
+            "min": 0,
+            "max": 200
+        },
+        "weight": {
+            "min": 70,
+            "max": 200
+        }
+    },
+    {
+        "code": "OFR002",
+        "discount": {
+            "type": "percentage",
+            "value": 7
+        },
+        "distance": {
+            "min": 50,
+            "max": 150
+        },
+        "weight": {
+            "min": 100,
+            "max": 250
+        }
+    },
+    {
+        "code": "OFR003",
+        "discount": {
+            "type": "percentage",
+            "value": 5
+        },
+        "distance": {
+            "min": 50,
+            "max": 250
+        },
+        "weight": {
+            "min": 10,
+            "max": 150
+        }
+    }
+]
