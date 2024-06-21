@@ -1,7 +1,7 @@
 {
 	"name": "super-delivery",
 	"description": "A CLI tool for super delivery",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"keywords": [
 		"cli",
 		"delivery",
